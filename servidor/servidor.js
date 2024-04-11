@@ -7,6 +7,7 @@ import { Server } from "socket.io";
 import "./db/dbConnect.js";
 
 const app = express();
+// eslint-disable-next-line no-undef
 const porta = process.env.porta || 3000;
 
 const caminhoAtual = url.fileURLToPath(import.meta.url);
