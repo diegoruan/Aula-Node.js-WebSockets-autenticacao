@@ -1,3 +1,5 @@
+import { definirCookie } from "../utils/definirCookie.js";
+
 // eslint-disable-next-line no-undef
 const socket = io();
 
@@ -5,7 +7,9 @@ function emitirAutenticarUsuario(dados) {
   socket.emit("autenticar_usuario", dados);
 }
 
-socket.on("autenticacao_sucesso", () => { 
+socket.on("autenticacao_sucesso", (tokenJwt) => { 
+  definirCookie("tokenJwt", tokenJwt);
+
   alert("Usuário autenticado com sucesso!");
   window.location.href = "/";
 });
