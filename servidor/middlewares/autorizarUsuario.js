@@ -5,7 +5,9 @@ function autorizarUsuario(socket, next) {
 
   try {
     // eslint-disable-next-line no-undef
-    jwt.verify(tokenJwt, process.env.SEGREDO_JWT);
+    const payloadToken = jwt.verify(tokenJwt, process.env.SEGREDO_JWT);
+
+    socket.emit("autorizacao_sucesso", payloadToken);
 
     next();
 
